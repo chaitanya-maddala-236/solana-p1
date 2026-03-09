@@ -932,7 +932,7 @@ function dispatch(method: string, params: unknown[]): unknown {
       const value = sigs.map(sig => {
         const info = confirmedTxs.get(sig);
         if (!info) return null;
-        return { slot: info.slot, confirmations: null, err: info.err, confirmationStatus: "finalized" };
+        return { slot: info.slot, confirmations: null, err: info.err, confirmationStatus: "confirmed" };
       });
       return { context: { slot }, value };
     }
@@ -940,7 +940,7 @@ function dispatch(method: string, params: unknown[]): unknown {
       const sig  = params[0] as string;
       const info = confirmedTxs.get(sig);
       if (!info) return { context: { slot }, value: null };
-      return { context: { slot }, value: { slot: info.slot, confirmations: null, err: info.err, confirmationStatus: "finalized" } };
+      return { context: { slot }, value: { slot: info.slot, confirmations: null, err: info.err, confirmationStatus: "confirmed" } };
     }
     case "getTransaction": {
       const sig = params[0] as string;
